@@ -2,7 +2,6 @@
  <v-fbsplash
   name="fbsplash"
   provides="fbsplash"
-  before="tty"
   requires="mount-critical">
 
   <execute id="enable" code="for TTY in ${configuration_feedback_visual_fbsplash_ttys} ; do

@@ -2,7 +2,7 @@
  <v-ip6tables
   name="Ipv6 Linux firewall, NAT and packet mangling tools"
   provides="ip6tables"
-  requires="network">
+  after="^net">
 
   <execute id="prepare" code="touch ${configuration_services_iptables_rules_file} ;
            chmod 0600 ${configuration_services_iptables_rules_file}" />

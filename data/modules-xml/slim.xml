@@ -7,6 +7,6 @@
   <execute id="enable" code="slim -d" />
   <execute id="disable" code="killall -9 slim" />
 
-  <need-files s="slim:X" />
+  <need-files s="slim:X:/var/run/." />
  </v-slim>
 </module>

@@ -2,8 +2,8 @@
  <v-winbindd
   name="Samba Winbind daemon (winbindd)"
   provides="winbindd"
-  after="cupsd"
-  before="smbd"
+  after="^cupsd$"
+  before="^smbd$"
   requires="nmbd">
 
   <execute id="daemon" code="winbindd -F ${configuration_services_winbindd_options}" />
