@@ -4,7 +4,7 @@
   provides="local"
   after=".*">
 
-  <execute id="enable" code="sh /etc/einit/local.start; done" />
-  <execute id="disable" code="sh /etc/einit/local.stop; done" />
+  <execute id="enable" code="sh /etc/einit/conf.d/local.start; done" />
+  <execute id="disable" code="sh /etc/einit/conf.d/local.stop; done" />
  </v-local>
 </module>
