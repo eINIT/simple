@@ -4,9 +4,11 @@
   provides="x11:displaymanager">
 
   <execute id="prepare" code="rm -rf /var/run/slim.*" />
-  <execute id="enable" code="slim -d" />
-  <execute id="disable" code="killall -9 slim" />
+  <execute id="daemon" code="slim -d" />
 
+  <restart b="yes" />
+  <options s="forking" />
+  <pidfile s="/var/run/slim.lock" />
   <need-files s="slim:X" />
  </v-slim>
 </module>

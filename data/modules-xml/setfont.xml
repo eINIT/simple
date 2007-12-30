@@ -2,8 +2,7 @@
  <v-setfont
   name="setfont (${configuration_system_setfont_font})"
   provides="setfont"
-  requires="mount-critical:keyboard"
-  before="tty">
+  requires="mount-critical:keyboard">
 
   <execute id="enable" code="tty_max=$(cat /etc/einit/subsystems.d/tty.xml | egrep -c 'tty[0-9]-regular') ;
           tty_list=$(seq 1 ${tty_max}) ;
