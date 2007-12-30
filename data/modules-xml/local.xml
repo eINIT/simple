@@ -1,0 +1,10 @@
+<module>
+ <v-local
+  name="local.start/local.stop"
+  provides="local"
+  after=".*">
+
+  <execute id="enable" code="sh /etc/einit/local.start; done" />
+  <execute id="disable" code="sh /etc/einit/local.stop; done" />
+ </v-local>
+</module>
