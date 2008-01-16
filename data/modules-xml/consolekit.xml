@@ -1,0 +1,12 @@
+<module>
+ <v-consolekit
+  name="ConsoleKit Daemon (consolekit)"
+  provides="consolekit"
+  requires="dbus"
+  after="logger">
+ 
+  <execute id="daemon" code="/usr/sbin/console-kit-daemon --no-daemon" />
+
+  <restart b="yes" />
+ </v-consolekit>
+</module>
