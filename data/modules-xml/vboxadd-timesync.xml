@@ -1,0 +1,11 @@
+<module>
+ <v-vboxadd-timesync
+  name="VirtualBox host to guest time synchronization (vboxadd-timesync)"
+  provides="vboxadd-timesync"
+  requires="vboxadd">
+ 
+  <execute id="daemon" code="vboxadd-timesync" />
+
+  <restart b="yes" />
+ </v-vboxadd-timesync>
+</module>
