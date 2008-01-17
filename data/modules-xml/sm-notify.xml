@@ -1,0 +1,12 @@
+<module>
+ <v-sm-notify
+  name="NSM Reboot Notifier (sm-notify)"
+  provides="sm-notify"
+  requires="portmap:rpc.statd" >
+ 
+  <execute id="daemon" code="sm-notify" />
+
+  <need-files s="sm-notify" />
+  <restart b="yes" />
+ </v-sm-notify>
+</module>
