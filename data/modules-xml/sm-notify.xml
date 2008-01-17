@@ -6,7 +6,9 @@
  
   <execute id="daemon" code="sm-notify" />
 
+  <pidfile s="/var/run/sm-notify.pid">
   <need-files s="sm-notify" />
   <restart b="yes" />
+  <options s="forking" />
  </v-sm-notify>
 </module>
