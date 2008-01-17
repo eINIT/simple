@@ -1,7 +1,9 @@
 <module>
  <v-portmap
-  name="Portmap Daemon"
-  provides="portmap">
+  name="Port to RPC program number mapper (portmap)"
+  provides="portmap"
+  after="^net"
+  before="xinetd" >
 
   <execute id="daemon" code="portmap -d" />
 
