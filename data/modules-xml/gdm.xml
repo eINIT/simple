@@ -3,7 +3,7 @@
   name="The GNOME Display Manager (gdm)"
   requires="dbus"
   provides="x11:displaymanager"
-  after="consolekit">
+  after="consolekit:hal">
 
   <execute id="prepare" code="if [ ! -d /var/log/gdm ]; then  mkdir /var/log/gdm; fi; true" />
   <execute id="daemon" code="gdm" />
