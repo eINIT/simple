@@ -4,12 +4,12 @@
   provides="rpc.statd"
   requires="portmap" >
  
-  <execute id="prepare" code="killall -q -0 /sbin/rpc.statd; true" />
+  <execute id="daemon" code="rpc.statd -L ${configuration_services_statd_options}" />
 
-  <execute id="daemon" code="rpc.statd -F -L ${configuration_services_statd_options}" />
-
+  <pidfile s="/var/run/rpc.statd.pid" />
   <need-files s="rpc.statd" />
   <restart b="yes" />
   <variables s="configuration-services-statd/.*" />
+  <options s="forking" />
  </v-rpc.statd>
 </module>
