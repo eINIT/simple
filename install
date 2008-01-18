@@ -44,4 +44,13 @@ INSTALL=install
 " > config.sh;
 fi
 
+echo "Installing generic modules..."
 cd data && ./install
+
+if test -e /etc/frugalware-release; then
+	echo "Installing specialised modules for Frugalware...";
+	cd data-frugalware && ./install;
+elif test -e /etc/gentoo-release; then
+	echo "Installing specialised modules for Gentoo...";
+	cd data-gentoo && ./install;
+fi
