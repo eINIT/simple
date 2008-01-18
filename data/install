@@ -30,7 +30,6 @@ ${INSTALL} ${IPARAM} -d ${DESTDIR}/${ETCDIR}
 ${INSTALL} ${IPARAM} -d ${DESTDIR}/${ETCDIR}/conf.d
 ${INSTALL} ${IPARAM} -d ${DESTDIR}/${LIBDIR}
 ${INSTALL} ${IPARAM} -d ${DESTDIR}/${LIBDIR}/modules-xml
-${INSTALL} ${IPARAM} -d ${DESTDIR}/${LIBDIR}/modules-xml/network
 ${INSTALL} ${IPARAM} -d ${DESTDIR}/${LIBDIR}/defaults
 ${INSTALL} ${IPARAM} -d ${DESTDIR}/${LIBDIR}/defaults/conf.d
 
