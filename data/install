@@ -36,7 +36,7 @@ ${INSTALL} ${IPARAM} -d ${DESTDIR}/${LIBDIR}/defaults/conf.d
 
 if test -d modules-xml; then
 	for i in modules-xml/*.xml; do
-		echo "Installing $i to {DESTDIR}/${LIBDIR}/modules-xml"
+		echo "Installing $i to ${DESTDIR}/${LIBDIR}/modules-xml"
 		${INSTALL} ${IPARAM} -m 0644 ${i} ${DESTDIR}/${LIBDIR}/modules-xml
 	done
 fi
