@@ -2,12 +2,14 @@
  <v-portmap
   name="Port to RPC program number mapper (portmap)"
   provides="portmap"
+  requires="network"
   after="^net"
   before="xinetd" >
 
-  <execute id="daemon" code="portmap -d" />
+  <execute id="daemon" code="portmap -d ${configuration_services_portmap_options}" />
 
   <need-files s="portmap" />
   <restart b="yes" />
+  <variables s="configuration-services-portmap/.*" />
  </v-portmap>
 </module>
