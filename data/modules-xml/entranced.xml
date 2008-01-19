@@ -1,13 +1,12 @@
 <module>
  <v-entranced
   name="EntranceD"
-  provides="displaymanager:entranced"
-  requires="mount-critical">
+  provides="x11:displaymanager:entranced">
 
   <execute id="enable" code="entranced" />
   <execute id="disable" code="killall entranced" />
 
-  <need-files s="entranced:X" />
+  <need-files s="entranced:X:/tmp/." />
   <environment DISPLAY=":0.0" HOME="/root" />
  </v-entranced>
 </module>

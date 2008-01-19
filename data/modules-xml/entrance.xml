@@ -6,7 +6,7 @@
 
   <execute id="daemon" code="entrance" />
 
-  <need-files s="entrance" />
+  <need-files s="entrance:/tmp/." />
   <environment DISPLAY=":0.0" HOME="/root" />
   <restart b="yes" />
  </v-entrance>
