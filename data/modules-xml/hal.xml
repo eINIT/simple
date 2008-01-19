@@ -2,14 +2,15 @@
  <v-hald
   name="Hardware Abstraction Layer"
   provides="hal"
-  after="^(logger|displaymanager|acpid)$"
+  after="^(logger|acpid)$"
   requires="dbus">
 
-  <execute id="daemon" code="hald --daemon=yes --use-syslog --verbose=no" />
+  <execute id="daemon" code="pexec-options dont-close-stdin; hald --daemon=yes --use-syslog --verbose=no" />
 
   <options s="forking" />
   <restart b="yes" />
   <need-files s="hald" />
   <pidfile s="/var/run/hald.pid" />
+  <environment USER="root" HOME="/root" />
  </v-hald>
 </module>

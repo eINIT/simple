@@ -1,0 +1,27 @@
+<module>
+ <v-rpc.idmapd
+  name="NFSv4 ID - name mapper (rpc.idmapd)"
+  provides="rpc.idmapd"
+  requires="portmap" >
+ 
+  <execute id="prepare"
+   code="if grep -qs rpc_pipefs /proc/filesystems ; then
+		if ! grep -qs 'rpc_pipefs /var/lib/nfs/rpc_pipefs' /proc/mounts ; then
+			mkdir -p /var/lib/nfs/rpc_pipefs ;
+			mount -t rpc_pipefs rpc_pipefs /var/lib/nfs/rpc_pipefs ;
+			if [[ $? == '0' ]] ; then
+				echo 'feedback|notice|Mounted RPC pipefs' ;
+			else
+				echo 'feedback|warning|Failed to mount RPC pipefs' ;
+			fi ;
+		fi ;
+	fi ; true" />
+
+  <execute id="daemon" code="rpc.idmapd ${configuration_services_idmapd_options}" />
+
+  <need-files s="rpc.idmapd" />
+  <options s="forking" />
+  <restart b="yes" />
+  <variables s="configuration-services-idmapd/.*" />
+ </v-rpc.idmapd>
+</module>
