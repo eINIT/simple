@@ -1,0 +1,28 @@
+<module>
+ <v-rpc.svcgssd
+  name="Server-side RPCSec_GSS daemon (rpc.svcgssd)"
+  provides="rpc.svcgssd"
+  requires="portmap" >
+
+  <execute id="prepare"
+   code="if grep -qs rpc_pipefs /proc/filesystems ; then
+                if ! grep -qs 'rpc_pipefs /var/lib/nfs/rpc_pipefs' /proc/mounts ; then
+                        mkdir -p /var/lib/nfs/rpc_pipefs ;
+                        mount -t rpc_pipefs rpc_pipefs /var/lib/nfs/rpc_pipefs ;
+                        if [[ $? == '0' ]] ; then
+                                echo 'feedback|notice|Mounted RPC pipefs' ;
+                        else
+                                echo 'feedback|warning|Failed to mount RPC pipefs' ;
+                        fi ;
+                fi ;
+        fi ; true" />
+
+  <execute id="daemon" code="rpc.svcgssd ${configuration_services_svcgssd_options}" />
+
+  <pidfile s="/var/run/rpc.svcgssd.pid" />
+  <need-files s="rpc.svcgssd" />
+  <restart b="yes" />
+  <variables s="configuration-services-svcgssd/.*" />
+  <options s="forking" />
+ </v-rpc.svcgssd>
+</module>
