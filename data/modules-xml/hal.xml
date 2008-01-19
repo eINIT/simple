@@ -2,7 +2,7 @@
  <v-hald
   name="Hardware Abstraction Layer"
   provides="hal"
-  after="^(logger|displaymanager|acpid)$"
+  after="^(logger|acpid)$"
   requires="dbus">
 
   <execute id="daemon" code="pexec-options dont-close-stdin; hald --daemon=yes --use-syslog --verbose=no" />
