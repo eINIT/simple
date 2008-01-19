@@ -4,7 +4,7 @@
   provides="rpc.statd"
   requires="portmap" >
  
-  <execute id="daemon" code="rpc.statd -L ${configuration_services_statd_options}" />
+  <execute id="daemon" code="rpc.statd ${configuration_services_statd_options}" />
 
   <pidfile s="/var/run/rpc.statd.pid" />
   <need-files s="rpc.statd" />
