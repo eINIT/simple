@@ -1,0 +1,13 @@
+<module>
+ <v-sm-notify
+  name="NSM Reboot Notifier (sm-notify)"
+  provides="sm-notify"
+  requires="rpc.statd"
+  after="nfs" >
+ 
+  <execute id="enable" code="sm-notify" />
+  <execute id="disable" code="true" />
+
+  <need-files s="sm-notify" />
+ </v-sm-notify>
+</module>
