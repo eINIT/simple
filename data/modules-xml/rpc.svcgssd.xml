@@ -5,7 +5,8 @@
   requires="portmap" >
 
   <execute id="prepare"
-   code="if grep -qs rpc_pipefs /proc/filesystems ; then
+   code="modprobe -q sunrpc ;
+	  if grep -qs rpc_pipefs /proc/filesystems ; then
                 if ! grep -qs 'rpc_pipefs /var/lib/nfs/rpc_pipefs' /proc/mounts ; then
                         mkdir -p /var/lib/nfs/rpc_pipefs ;
                         mount -t rpc_pipefs rpc_pipefs /var/lib/nfs/rpc_pipefs ;

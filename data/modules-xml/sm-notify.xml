@@ -2,7 +2,8 @@
  <v-sm-notify
   name="NSM Reboot Notifier (sm-notify)"
   provides="sm-notify"
-  requires="rpc.statd" >
+  requires="rpc.statd"
+  after="rpc.idmapd:rpc.gssd:rpc.svcgssd:nfs" >
  
   <execute id="enable" code="sm-notify" />
   <execute id="disable" code="true" />
