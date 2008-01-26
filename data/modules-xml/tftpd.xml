@@ -4,12 +4,9 @@
   provides="tftpd"
   requires="network">
 
-  <execute id="daemon" code="in.tftpd -L ${INTFTPD_OPTS}; pidof in.tftpd &gt; /var/run/in.tftpd.pid" />
+  <execute id="daemon" code=". /etc/conf.d/in.tftpd; in.tftpd -L ${INTFTPD_OPTS}" />
 
-  <pidfile s="/var/run/in.tftpd.pid" />
   <restart b="yes" />
   <need-files s="in.tftpd" />
-  <environment envfile="/etc/conf.d/in.tftpd" />
-  <options s="forking" />
  </v-tftpd-gentoo>
 </module>
