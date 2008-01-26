@@ -1,0 +1,15 @@
+<module>
+ <v-tftpd-gentoo
+  name="TFTP Daemon (in.tftpd, Gentoo)"
+  provides="tftpd"
+  requires="network">
+
+  <execute id="daemon" code="in.tftpd ${INTFTPD_OPTS}; pidof in.tftpd &gt; /var/run/in.tftpd.pid" />
+
+  <pidfile s="/var/run/in.tftpd.pid" />
+  <restart b="yes" />
+  <need-files s="in.tftpd" />
+  <environment envfile="/etc/conf.d/in.tftpd" />
+  <options s="forking" />
+ </v-tftpd-gentoo>
+</module>
