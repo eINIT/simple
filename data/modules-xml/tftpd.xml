@@ -4,7 +4,7 @@
   provides="tftpd"
   requires="network">
 
-  <execute id="daemon" code="in.tftpd ${INTFTPD_OPTS}; pidof in.tftpd &gt; /var/run/in.tftpd.pid" />
+  <execute id="daemon" code="in.tftpd -L ${INTFTPD_OPTS}; pidof in.tftpd &gt; /var/run/in.tftpd.pid" />
 
   <pidfile s="/var/run/in.tftpd.pid" />
   <restart b="yes" />
