@@ -6,7 +6,7 @@
   <execute id="enable" code="entranced" />
   <execute id="disable" code="killall entranced" />
 
-  <need-files s="entranced:X:/tmp/." />
+  <need-files s="entranced:X:/tmp/.:/home/." />
   <environment DISPLAY=":0.0" HOME="/root" />
  </v-entranced>
 </module>

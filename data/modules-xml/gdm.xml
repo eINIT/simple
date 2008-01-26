@@ -8,7 +8,7 @@
   <execute id="daemon" code="gdm" />
 
   <pidfile s="/var/run/gdm.pid" />
-  <need-files s="gdm:X:/tmp/." />
+  <need-files s="gdm:X:/tmp/.:/home/." />
   <restart b="yes" />
   <options s="forking" />
  </v-gdm>

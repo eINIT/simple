@@ -9,6 +9,6 @@
   <restart b="yes" />
   <options s="forking" />
   <pidfile s="/var/run/slim.lock" />
-  <need-files s="slim:X:/tmp/." />
+  <need-files s="slim:X:/tmp/.:/home/." />
  </v-slim>
 </module>
