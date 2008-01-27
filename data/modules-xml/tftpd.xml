@@ -1,12 +1,13 @@
 <module>
- <v-tftpd-gentoo
-  name="TFTP Daemon (in.tftpd, Gentoo)"
+ <v-tftpd
+  name="TFTP Daemon (in.tftpd)"
   provides="tftpd"
   requires="network">
 
-  <execute id="daemon" code=". /etc/conf.d/in.tftpd; in.tftpd -L ${INTFTPD_OPTS}" />
+  <execute id="daemon" code="in.tftpd -L ${configuration_services_tftpd_options}" />
 
   <restart b="yes" />
   <need-files s="in.tftpd" />
- </v-tftpd-gentoo>
+  <variables s="configuration-services-tftpd/.*" />
+ </v-tftpd>
 </module>
