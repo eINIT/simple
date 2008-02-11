@@ -40,6 +40,8 @@ if test -d modules-xml; then
 	done
 fi
 if test -d conf.d; then
+	export ${ETCDIR}
+	export ${ELIBDIR}
 	for i in conf.d/*.xml; do
 		${LIBDIR}/scripts/install-config "$i" conf.d "${CONFIGINSTALLMETHOD}";
 	done
