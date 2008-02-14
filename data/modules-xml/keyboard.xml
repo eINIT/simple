@@ -15,11 +15,7 @@
           loadkeys ${WK_KMP} ${configuration_services_keyboard_keymap} ${configuration_services_keyboard_extensions} 2&gt;/dev/null ;
 
           if [[ ${configuration_services_keyboard_unicode} == 'yes' ]] ; then
-          	if [[ -n ${configuration_services_keyboard_dumpkeys} ]] ; then
-          		dumpkeys -c ${configuration_services_keyboard_dumpkeys} | loadkeys --unicode ;
-          	else
-          		dumpkeys | loadkeys --unicode ;
-          	fi
+          	dumpkeys -c ${configuration_services_keyboard_dumpkeys} | loadkeys --unicode ;
           	termencoding=$'\033%G' ;
           else
           	termencoding=$'\033(K' ;
