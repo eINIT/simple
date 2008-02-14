@@ -5,8 +5,10 @@
   requires="dbus"
   after="logger">
  
-  <execute id="daemon" code="/usr/sbin/console-kit-daemon --no-daemon" />
-
+  <execute id="daemon" code="/usr/sbin/console-kit-daemon" />
+ 
+  <pidfile s="/var/run/consolekit.pid" />
+  <options s="forking" />
   <restart b="yes" />
  </v-consolekit>
 </module>
