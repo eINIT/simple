@@ -44,3 +44,5 @@ for i in glob.glob('data/conf.d/*.xml'):
   env.Install (InstallDirEtc + '/conf.d', RuntimeDirEtc + '/conf.d/' + b)
  except:
   env.Install (InstallDirEtc + '/conf.d', i)
+
+env.Alias ('install', [InstallDirEtc + '/conf.d', InstallDirLibEinit + '/modules-xml'])
