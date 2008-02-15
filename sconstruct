@@ -1,0 +1,46 @@
+import glob, os, os.path
+
+env = Environment()
+
+opts = Options()
+opts.Add('libdir', 'Define the basename for library dirs', 'lib')
+opts.Add('destdir', 'Define the (installation) prefix; The Directory to install to', '')
+opts.Add('prefix', 'Define the (runtime) prefix', '/')
+
+destdir = ARGUMENTS.get('destdir', '')
+prefix = ARGUMENTS.get('prefix', '/')
+libdir = ARGUMENTS.get('libdir', 'lib')
+
+Help(opts.GenerateHelpText(env))
+
+RuntimeDirEtc = prefix + 'etc/einit'
+RuntimeDirLibEinit = prefix + libdir + '/einit'
+
+InstallDirEtc = destdir + RuntimeDirEtc
+InstallDirLibEinit = destdir + RuntimeDirLibEinit
+
+haveFiles = []
+
+try:
+ os.stat('/etc/frugalware-release')
+ for i in glob.glob('data-frugalware/modules-xml/*.xml'):
+  b = os.path.basename(i)
+  haveFile += [ b ]
+
+  env.Install (InstallDirLibEinit + '/modules-xml', i)
+except:
+ print ("not frugalware...")
+
+for i in glob.glob('data/modules-xml/*.xml'):
+ b = os.path.basename(i)
+ if not b in haveFiles:
+  env.Install (InstallDirLibEinit + '/modules-xml', i)
+
+for i in glob.glob('data/conf.d/*.xml'):
+ b = os.path.basename(i)
+ env.Install (InstallDirLibEinit + '/defaults/conf.d', i)
+ try:
+  os.stat(RuntimeDirEtc + '/conf.d/' + b)
+  env.Install (InstallDirEtc + '/conf.d', RuntimeDirEtc + '/conf.d/' + b)
+ except:
+  env.Install (InstallDirEtc + '/conf.d', i)
