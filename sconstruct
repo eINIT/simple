@@ -60,7 +60,6 @@ for i in glob.glob('data/conf.d/*.xml'):
     env.InstallAs (InstallDirEtc + '/conf.d/' + b, RuntimeDirEtc + '/conf.d/' + b)
   except:
    env.InstallAs (InstallDirEtc + '/conf.d/' + b, i)
-  env.Install (InstallDirEtc + '/conf.d', RuntimeDirEtc + '/conf.d/' + b)
  except:
   env.Install (InstallDirEtc + '/conf.d', i)
 
