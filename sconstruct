@@ -38,7 +38,7 @@ for i in glob.glob('data/modules-xml/*.xml'):
 
 for i in glob.glob('data/conf.d/*.xml'):
  b = os.path.basename(i)
- env.Install (InstallDirLibEinit + '/defaults/conf.d/', b)
+ env.Install (InstallDirLibEinit + '/defaults/conf.d/', i)
  try:
   os.stat(RuntimeDirEtc + '/conf.d/' + b)
   try:
