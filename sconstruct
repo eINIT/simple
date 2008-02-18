@@ -38,10 +38,28 @@ for i in glob.glob('data/modules-xml/*.xml'):
 
 for i in glob.glob('data/conf.d/*.xml'):
  b = os.path.basename(i)
- env.Install (InstallDirLibEinit + '/defaults/conf.d', i)
+ env.Install (InstallDirLibEinit + '/defaults/conf.d/', i)
  try:
   os.stat(RuntimeDirEtc + '/conf.d/' + b)
-  env.Install (InstallDirEtc + '/conf.d', RuntimeDirEtc + '/conf.d/' + b)
+  try:
+   odata = ""
+   ndata = ""
+   f = open(RuntimeDirLibEinit + '/defaults/conf.d/' + b, "r")
+   if f:
+    odata = f.read ()
+    f.close()
+
+   f = open(i, "r")
+   if f:
+    ndata = f.read ()
+    f.close()
+
+   if ndata != odata:
+    env.InstallAs (InstallDirEtc + '/conf.d/' + b, i)
+   else:
+    env.InstallAs (InstallDirEtc + '/conf.d/' + b, RuntimeDirEtc + '/conf.d/' + b)
+  except:
+   env.InstallAs (InstallDirEtc + '/conf.d/' + b, i)
  except:
   env.Install (InstallDirEtc + '/conf.d', i)
 
