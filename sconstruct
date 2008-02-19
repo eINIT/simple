@@ -15,9 +15,11 @@ Help(opts.GenerateHelpText(env))
 
 RuntimeDirEtc = prefix + 'etc/einit'
 RuntimeDirLibEinit = prefix + libdir + '/einit'
+RuntimeDirModules = prefix + libdir + '/einit/modules'
 
 InstallDirEtc = destdir + RuntimeDirEtc
 InstallDirLibEinit = destdir + RuntimeDirLibEinit
+InstallDirModules = destdir + RuntimeDirModules
 
 haveFiles = []
 
@@ -63,4 +65,27 @@ for i in glob.glob('data/conf.d/*.xml'):
  except:
   env.Install (InstallDirEtc + '/conf.d', i)
 
-env.Alias ('install', [InstallDirEtc + '/conf.d', InstallDirLibEinit + '/modules-xml', InstallDirLibEinit + '/defaults/conf.d'])
+menv = env.Clone (SHLIBPREFIX = '', CCFLAGS = '-DEINIT_MODULE')
+
+librt = [ 'rt' ]
+
+uname = "unknown"
+
+f = os.popen ('uname', 'r')
+if f:
+ uname = f.readline().strip()
+ f.close()
+
+if uname == 'Darwin':
+ menv.Append (LINKFLAGS = '$LINKFLAGS -Wl,-bundle_loader,src/einit-core')
+ librt = []
+
+def buildModule(name, location, e):
+ e.Install(InstallDirModules, e.LoadableModule(name, location + '/' + name + '.c'))
+
+Modules = ['module-xml']
+
+for i in Modules:
+ buildModule (i, 'src', menv)
+
+env.Alias ('install', [InstallDirEtc + '/conf.d', InstallDirLibEinit + '/modules-xml', InstallDirLibEinit + '/defaults/conf.d', InstallDirModules])
