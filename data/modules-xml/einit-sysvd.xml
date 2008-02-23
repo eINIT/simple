@@ -1,5 +1,5 @@
 <module>
- <v-sensord
+ <v-sysvd
   name="eINIT SysV Compatibility Daemon"
   provides="sysvd">
 
@@ -9,5 +9,5 @@
   <pidfile s="/var/run/einit-sysvd.pid" />
   <options s="forking" />
   <restart b="yes" />
- </v-sensord>
+ </v-sysvd>
 </module>
