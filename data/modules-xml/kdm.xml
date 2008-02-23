@@ -1,7 +1,8 @@
 <module>
  <v-kdm
   name="The KDE Display Manager (kdm)"
-  provides="x11:displaymanager">
+  provides="x11:displaymanager"
+  requires="sysvd">
 
   <execute id="daemon" code="/usr/kde/3.5/bin/kdm" />
 

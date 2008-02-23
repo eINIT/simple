@@ -1,0 +1,13 @@
+<module>
+ <v-sensord
+  name="eINIT SysV Compatibility Daemon"
+  provides="sysvd">
+
+  <execute id="daemon" code="einit-sysvd" />
+
+  <need-files s="einit-sysvd" />
+  <pidfile s="/var/run/einit-sysvd.pid" />
+  <options s="forking" />
+  <restart b="yes" />
+ </v-sensord>
+</module>

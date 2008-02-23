@@ -1,7 +1,8 @@
 <module>
  <v-entranced
   name="EntranceD"
-  provides="x11:displaymanager:entranced">
+  provides="x11:displaymanager:entranced"
+  requires="sysvd">
 
   <execute id="enable" code="entranced" />
   <execute id="disable" code="killall entranced" />

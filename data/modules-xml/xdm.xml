@@ -2,7 +2,7 @@
  <v-xdm
   name="The X Display Manager (xdm)"
   provides="x11:displaymanager"
-  requires="mount-critical">
+  requires="mount-critical:sysvd"">
 
   <execute id="daemon" code="xdm -nodaemon" />
 
