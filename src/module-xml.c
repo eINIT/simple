@@ -49,7 +49,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <libgen.h>
 
 #include <einit-modules/exec.h>
-#include <einit-modules/scheduler.h>
 
 #include <dlfcn.h>
 #include <sys/wait.h>
@@ -795,7 +794,6 @@ void module_xml_v2_power_event_handler (struct einit_event *ev) {
 
 int module_xml_v2_cleanup (struct lmodule *pa) {
  exec_cleanup (pa);
- sched_cleanup(irr);
 
  event_ignore (einit_power_reset_scheduled, module_xml_v2_power_event_handler);
  event_ignore (einit_power_down_scheduled, module_xml_v2_power_event_handler);
@@ -808,7 +806,6 @@ int module_xml_v2_cleanup (struct lmodule *pa) {
 int module_xml_v2_configure (struct lmodule *pa) {
  module_init (pa);
  exec_configure (pa);
- sched_configure(irr);
 
  pa->scanmodules = module_xml_v2_scanmodules;
  pa->cleanup = module_xml_v2_cleanup;
