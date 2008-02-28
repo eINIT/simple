@@ -3,7 +3,7 @@
   name="eINIT PSplash Support"
   provides="einit-psplash">
 
-  <execute id="enable" code="einit-feedbackd-psplash &" />
+  <execute id="enable" code="einit-feedbackd-psplash &amp;" />
   <execute id="disable" code="killall einit-feedbackd-psplash; true" />
 
   <need-files s="einit-feedbackd-psplash" />
