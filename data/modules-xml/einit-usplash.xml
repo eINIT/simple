@@ -1,0 +1,13 @@
+<module>
+ <v-einit-usplash
+  name="eINIT USplash Support"
+  provides="einit-usplash">
+
+  <execute id="daemon" code="einit-feedbackd-usplash" />
+
+  <need-files s="einit-feedbackd-usplash" />
+  <pidfile s="/dev/einit-feedbackd-usplash.pid" />
+  <options s="forking" />
+  <restart b="no" />
+ </v-einit-usplash>
+</module>
