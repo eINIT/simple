@@ -3,9 +3,11 @@
   name="eINIT PSplash Support"
   provides="einit-psplash">
 
-  <execute id="enable" code="einit-feedbackd-psplash &amp;" />
-  <execute id="disable" code="killall einit-feedbackd-psplash; true" />
+  <execute id="daemon" code="einit-feedbackd-psplash" />
 
   <need-files s="einit-feedbackd-psplash" />
+  <pidfile s="/dev/einit-feedbackd-psplash.pid" />
+  <options s="forking" />
+  <restart b="no" />
  </v-einit-psplash>
 </module>
