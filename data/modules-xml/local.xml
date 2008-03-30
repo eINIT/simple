@@ -1,10 +1,16 @@
 <module>
  <v-local
-  name="local.start/local.stop"
+  name="local.start/local.stop (local)"
   provides="local"
   after=".*">
 
-  <execute id="enable" code="sh /etc/einit/conf.d/local.start; true" />
-  <execute id="disable" code="sh /etc/einit/conf.d/local.stop; true" />
+  <execute id="enable" code="if [ -r /etc/einit/conf.d/local.start ]; then;
+			         sh /etc/einit/conf.d/local.start;
+			     fi;
+			     true" />
+  <execute id="disable" code="if [ -r /etc/einit/conf.d/local.stop ]; then;
+			          sh /etc/einit/conf.d/local.stop;
+			      fi;
+			      true" />
  </v-local>
 </module>
